@@ -38,7 +38,6 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 The cloned repo contains a setup script that installs and configures the required tools. If you installed these tools in another tutorial in the getting started guide, you don't need to do it again.
 
-> [!NOTE]
 > The setup script installs the following tools:
 > * [CMake](https://cmake.org): Build
 > * [ARM GCC](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm): Compile
