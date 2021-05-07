@@ -8,4 +8,4 @@ Currently, the following demo's are available:
 Demo | Description
 -----|------------
 Azure API for FHIR | Demo of the FHIR API Service, showing authentication, searching data and accessing data through a web app [Under Construction]
-IoT PnP in action | Demo to show IoT PnP in action. Creating an IoTC application, connecting a devkit and showing the result, all under 10 minutes [Under Construction]
+IoT PnP in action | Demo to show IoT PnP in action. Creating an IoTC application, connecting a devkit and showing the result, all under 15 minutes
