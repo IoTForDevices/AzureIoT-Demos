@@ -9,7 +9,7 @@ Make sure to have cloned and build the MXChip image. This is explained in the [d
 
 ## Demo Purpose
 
-This demo shows the power of IoT Plug and Play in combination with an Azure IoT Central application. Take a look at the [IoT Plug and Play](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play) and [Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/core/overview-iot-central) documentation to get enough background information for your partner / customer conversation.
+This demo shows the power of IoT Plug and Play in combination with an Azure IoT Central application. Take a look at the [IoT Plug and Play](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play) and [Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/core/overview-iot-central) documentation to get enough background information for your partner / customer conversation. At the end of this description, there are also a few details on how IoT Plug and Play is implemented, in this case by using the [Azure SDK for Embedded C](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot). You don't have to mention these low level details when running a demo, but they might help if your customer has additional questions.
 
 ## Step-by-Step instructions
 
@@ -186,3 +186,16 @@ After you have finished your demo, you can clean up the used resources by execut
 
 1. Modify the environment variables in the script ```delete-iotc-demo-app.sh``` so that they are identical to the environment variables you used in the script ```create-iotc-demo-app.sh```.
 1. Execute the bash script ```delete-iotc-demo-app.sh``` that is part of this repository in a WSL console with the [az cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt) + iot extension installed, or from an Azure Cloud Shell. If you are using the az cli locally, make sure you are signed in to the subscription for which you want to delete your Azure IoT Central application.
+
+## Additional implementation details
+
+This section helps you to understand what is happening under the covers when an IoT Plug and Play capable device connects for the first time to an IoT Hub or IoT Central application. You don't have to share this info with your solution building partner / customer, but when they have more detailed questions, this section might help you answering those.
+
+All examples in the getting-started repo make use of a device model that is available in [this repository](https://github.com/Azure/iot-plugandplay-models/tree/main/dtmi), or more specific at [this location](https://github.com/Azure/iot-plugandplay-models/tree/main/dtmi/azurertos/devkit). This is where the model (json) is defined. The tree in this GitHub repository maps to the model identifier (dtmi:azurertos:devkit:gsgmxchip).
+
+In source code in the **getting-started** repo, the model is defined in the file **nx_client.c** at line 24. In the same source file, we pass the model to a function called ```azure_iot_nx_client_create``` at line 319. This function is defined in a shared code base for all getting-started samples. The source file can be found here under the getting-started tree: core\src\azure_iot_nx. 
+ 
+In that file, you will find the function ```azure_iot_nx_client_create``` at line 466. In that function, we create a thread that deals with initializing our application (reaching out to DPS, retrieving the IoT Hub to connect to, deal with certificates, but also inform IoTHub or IOTC App) that we have a PnP Model, identified by ```dtmi:azurertos:devkit:gsgmxchip```. 
+ 
+When the device connects initially, IOTC tries to find the model in a global repository containing PnP certified devices. If it finds it, IOTC 'knows' what telemetry, commands and properties are defined in the model and creates a very basic UI around them. If the model is not found (not part of the PnP public repository), the device can still connect, but IOTC can't automatically import PnP capabilities of the device. In that case, you manually have to import the device model into the IoTC application.
+ 

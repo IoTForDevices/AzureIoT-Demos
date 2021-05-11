@@ -6,7 +6,7 @@ SUBDOMAIN_NAME="iotc-demo-mst01"
 DISPLAY_NAME="IOTC Demo MST01"
 
 # Create a resource group for the IoT Central application
-# az group create --location "West Europe" --name "rg-iotc-demo-mst01"
+az group create --location "West Europe" --name $RG_NAME
 
 # Create an IoT Central application
 az iot central app create \
