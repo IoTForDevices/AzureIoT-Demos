@@ -140,7 +140,9 @@ With IoT Central, you can view the flow of telemetry from your device to the clo
 
 1. View the telemetry as the device sends messages to the cloud in the **Overview** tab.
 
-    > You can also monitor telemetry from the device by using the Termite app.
+    ![ScreenShot](media/IOTC-Overview.png)
+
+    > You can also monitor telemetry from the device by using the Terminalte app.
 
 ## Call a direct method on the device
 

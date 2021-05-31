@@ -33,3 +33,5 @@ FHIR as a system / solution to solve problems: Architecture Backround
 We are using a conceptual architecture. Concept in architecture is similar to the concept of a book. The concept does not dictate the final manifestation (or the combination of words in a book), but instead sets up a sort of theme and essence that guides and gives some structure to work with / from. Formally: A concept is a **self imposed constraint**.
 
 ![ScreenShot](media/SimpleView.png)
+
+Checkout [these videos](https://www.youtube.com/playlist?list=PL8nfc9haGeb7zEgT3DXS110BgY5032bf1) for more background info.
