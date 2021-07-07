@@ -24,6 +24,8 @@ Today, there are two Microsoft offerings:
 
 In this demo we focus on the Azure API for FHIR.
 
+> Make sure to delete all resources after the demo to limit unnessesary spending. The Azure API for FHIR (just the service itself) costs approx. $10 / day.
+
 
 
 
@@ -35,3 +37,6 @@ We are using a conceptual architecture. Concept in architecture is similar to th
 ![ScreenShot](media/SimpleView.png)
 
 Checkout [these videos](https://www.youtube.com/playlist?list=PL8nfc9haGeb7zEgT3DXS110BgY5032bf1) for more background info.
+
+## Step-by-Step instructions
+
